@@ -1,6 +1,6 @@
-<mxfile host="65bd71144e" modified="2021-02-21T12:03:46.166Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.0 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36" version="14.2.4" etag="Zd8IXTh2VqcqvScfyiTF" type="embed">
+<mxfile host="65bd71144e" modified="2021-02-23T06:36:54.227Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.0 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36" version="14.2.4" etag="LU4uTi8Gntcxpx1dAYcc" type="embed">
     <diagram id="LipSlK3_hgSNNj_bYk18" name="Page-1">
-        <mxGraphModel dx="869" dy="751" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1409" dy="751" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -19,7 +19,7 @@
                 <mxCell id="38" value="products" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
                     <mxGeometry x="440" y="40" width="300" height="200" as="geometry"/>
                 </mxCell>
-                <mxCell id="39" value="title (string, not null)&#10;price (string, not null)&#10;description (text, not null)&#10;seller_name (string, not null)&#10;category (string, not null)&#10;condition (string, not null)&#10;shipping_charge (string, not null)&#10;shipping_area (string, not null)&#10;shipping_date (string, not null) " style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="38">
+                <mxCell id="39" value="title (string, not null)&#10;price (string, not null)&#10;description (text, not null)&#10;seller_name (string, not null)&#10;category (string, not null)&#10;condition (string, not null)&#10;shipping_charge (string, not null)&#10;shipping_area (string, not null)&#10;shipping_date (string, not null) &#10;user_id (references) " style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="38">
                     <mxGeometry y="30" width="300" height="170" as="geometry"/>
                 </mxCell>
                 <mxCell id="40" value="purchase" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
