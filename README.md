@@ -2,21 +2,21 @@
 
 ## users table
 
-| Column             | Type         | Options            |
-|--------------------|--------------|--------------------|
-| nick_name          | string       | null: false        |
-| email              | string       | null: false        |
-| password           | string       | null: false        |
-| first_name         | string       | null: false        |
-| last_name          | string       | null: false        |
-| birth_year         | string       | null: false        |
-| birth_month        | string       | null: false        |
-| birth_day          | string       | null: false        |
+| Column             | Type         | Options                   |
+|--------------------|--------------|---------------------------|
+| nick_name          | string       | null: false               |
+| email              | string       | null: false, unique: true |
+| encrypted_password | string       | null: false               |
+| first_name         | string       | null: false               |
+| last_name          | string       | null: false               |
+| first_furigana     | string       | null: false               |
+| last_furigana      | string       | null: false               |
+| birth_date         | date         | null: false               |
 
 ### Association
 
 * has_many :products
-* has_many :purchase
+* has_many :purchases
 * has_many :comments
 
 ## products table
@@ -24,28 +24,27 @@
 | Column               | Type       | Options           |
 |----------------------|------------|-------------------|
 | title                | string     | null: false       |
-| price                | string     | null: false       |
+| price                | integer    | null: false       |
 | description          | text       | null: false       |
-| seller_name          | references | null: false       |
-| category             | string     | null: false       |
-| condition            | string     | null: false       |
-| shipping_charge      | string     | null: false       |
-| shipping_area        | string     | null: false       |
-| shipping_date        | string     | null: false       |
+| user                 | references | null: false       |
+| category_id          | integer    | null: false       |
+| condition_id         | integer    | null: false       |
+| shipping_charge_id   | integer    | null: false       |
+| shipping_area_id     | integer    | null: false       |
+| shipping_date_id     | integer    | null: false       |
 
 ### Association
 
 - belongs_to :user
 - has_many :comments
-- has_one :purchase
+- has_one :purchases
 
-## purchase table
+## purchases table
 
 | Column             | Type        | Options            |
 |--------------------|-------------|--------------------|
-| user_id            | references  | null: false        |
-| product_id         | references  | null: false        |
-| buyer_id           | references  | null: false        |
+| user               | references  | null: false        |
+| product            | references  | null: false        |
 
 ### Association
 
@@ -53,12 +52,13 @@
 - belong_to  :product
 - has_one :buyer
 
-## buyer table
+## buyers table
 
 | Column               | Type       | Options           |
 |----------------------|------------|-------------------|
+| user                 | references | null: false       |
 | postal_code          | string     | null: false       |
-| prefecture           | string     | null: false       |
+| prefecture_id        | integer    | null: false       |
 | municipality         | string     | null: false       |
 | address              | string     | null: false       |
 | building             | string     |                   |
@@ -66,7 +66,7 @@
 
 ### Association
 
-- belongs_to :purchase
+- belongs_to :purchases
 
 ## comments table
 
