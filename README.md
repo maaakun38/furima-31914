@@ -26,7 +26,7 @@
 | title                | string     | null: false       |
 | price                | integer    | null: false       |
 | description          | text       | null: false       |
-| user                 | references | null: false       |
+| user                 | references | foreign_key: true |
 | category_id          | integer    | null: false       |
 | condition_id         | integer    | null: false       |
 | shipping_charge_id   | integer    | null: false       |
@@ -37,14 +37,14 @@
 
 - belongs_to :user
 - has_many :comments
-- has_one :purchases
+- has_one :purchase
 
 ## purchases table
 
 | Column             | Type        | Options            |
 |--------------------|-------------|--------------------|
-| user               | references  | null: false        |
-| product            | references  | null: false        |
+| user               | references  | foreign_key: true  |
+| product            | references  | foreign_key: true  |
 
 ### Association
 
@@ -56,7 +56,7 @@
 
 | Column               | Type       | Options           |
 |----------------------|------------|-------------------|
-| user                 | references | null: false       |
+| purchase             | references | foreign_key: true |
 | postal_code          | string     | null: false       |
 | prefecture_id        | integer    | null: false       |
 | municipality         | string     | null: false       |
@@ -66,15 +66,15 @@
 
 ### Association
 
-- belongs_to :purchases
+- belongs_to :purchase
 
 ## comments table
 
 | Column      | Type       | Options           |
 |-------------|------------|-------------------|
 | text        | text       | null: false       |
-| user_id     | references | foreign_key: true |
-| product_id  | references | foreign_key: true |
+| user        | references | foreign_key: true |
+| product     | references | foreign_key: true |
 
 ### Association
 
