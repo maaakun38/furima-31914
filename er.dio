@@ -1,44 +1,38 @@
-<mxfile host="65bd71144e" modified="2021-02-23T06:36:54.227Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.0 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36" version="14.2.4" etag="LU4uTi8Gntcxpx1dAYcc" type="embed">
+<mxfile host="65bd71144e" modified="2021-02-26T07:20:20.455Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.0 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36" version="14.2.4" etag="KXYhbKVbsjTdg-qpd7rI" type="embed">
     <diagram id="LipSlK3_hgSNNj_bYk18" name="Page-1">
-        <mxGraphModel dx="1409" dy="751" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="886" dy="526" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="32" value="users" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
                     <mxGeometry x="60" y="70" width="300" height="150" as="geometry"/>
                 </mxCell>
-                <mxCell id="33" value="nick_name (string, not null)&#10;email (string, not null)&#10;password (string, not null)&#10;first_name (string, not null)&#10;last_name (string, not null)&#10;birth_year (string, not null)&#10;birth_month (string, not null) birth_day (string, not null)" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="32">
+                <mxCell id="33" value="nick_name (string, not null)&#10;email (string, not null)&#10;encrypted_password (string, not null,unique: true )&#10;first_name (string, not null)&#10;last_name (string, not null)&#10;first_furigana(string, not null)&#10;last_furigana(string, not null)&#10;birth_date (date, not null)&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="32">
                     <mxGeometry y="30" width="300" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="36" value="comments" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
                     <mxGeometry x="70" y="430" width="300" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="37" value="text (text, not null)&#10;user_id (references)&#10;product_id (references)" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="36">
+                <mxCell id="37" value="text (text, not null)&#10;user (references foreign key:true)&#10;product (references, foreign key:true)" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;fontStyle=0" vertex="1" parent="36">
                     <mxGeometry y="30" width="300" height="70" as="geometry"/>
                 </mxCell>
                 <mxCell id="38" value="products" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
                     <mxGeometry x="440" y="40" width="300" height="200" as="geometry"/>
                 </mxCell>
-                <mxCell id="39" value="title (string, not null)&#10;price (string, not null)&#10;description (text, not null)&#10;seller_name (string, not null)&#10;category (string, not null)&#10;condition (string, not null)&#10;shipping_charge (string, not null)&#10;shipping_area (string, not null)&#10;shipping_date (string, not null) &#10;user_id (references) " style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="38">
+                <mxCell id="39" value="title (string, not null)&#10;price (integer, not null)&#10;description (text, not null)&#10;user (references, foreign key:true)&#10;category_id (integer, not null)&#10;condition_id (integer, not null)&#10;shipping_charge_id (integer, not null)&#10;shipping_area_id (integer, not null)&#10;shipping_date_id (integer, not null) " style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="38">
                     <mxGeometry y="30" width="300" height="170" as="geometry"/>
                 </mxCell>
                 <mxCell id="40" value="purchase" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
                     <mxGeometry x="70" y="280" width="300" height="100" as="geometry"/>
                 </mxCell>
-                <mxCell id="41" value="user_id (references)&#10;product_id (references)&#10;buyer_id (references) " style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="40">
+                <mxCell id="41" value="user (references, foregn key:true)&#10;product (references, foreign key:)" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="40">
                     <mxGeometry y="30" width="300" height="70" as="geometry"/>
                 </mxCell>
                 <mxCell id="42" value="buyer" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
-                    <mxGeometry x="440" y="369" width="300" height="130" as="geometry"/>
+                    <mxGeometry x="440" y="252.5" width="300" height="155" as="geometry"/>
                 </mxCell>
-                <mxCell id="43" value="postal_code (string, not null)&#10;prefecture (string, not null)&#10;municipality (string, not null)&#10;address (string, not null)&#10;building (string )&#10;phone_number (string, not null)&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="42">
-                    <mxGeometry y="30" width="300" height="100" as="geometry"/>
-                </mxCell>
-                <mxCell id="44" value="payment_" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
-                    <mxGeometry x="440" y="259" width="300" height="100" as="geometry"/>
-                </mxCell>
-                <mxCell id="45" value="credit_number (string, not null)&#10;expiration_month (string, not null)&#10;expiration_year (string, not null)&#10;security_code (string, not null)&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="44">
-                    <mxGeometry y="30" width="300" height="70" as="geometry"/>
+                <mxCell id="43" value="purchse(references foreign key:true)&#10;postal_code (string, not null)&#10;prefecture_id (integer, not null)&#10;municipality (string, not null)&#10;address (string, not null)&#10;building (string )&#10;phone_number (string, not null)&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="42">
+                    <mxGeometry y="30" width="300" height="125" as="geometry"/>
                 </mxCell>
                 <mxCell id="46" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=ERoneToMany;endFill=0;" edge="1" parent="1" source="33">
                     <mxGeometry relative="1" as="geometry">
@@ -55,11 +49,6 @@
                             <mxPoint x="50" y="140"/>
                             <mxPoint x="50" y="495"/>
                         </Array>
-                    </mxGeometry>
-                </mxCell>
-                <mxCell id="49" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;endArrow=classicThin;endFill=1;" edge="1" parent="1" source="41">
-                    <mxGeometry relative="1" as="geometry">
-                        <mxPoint x="440" y="340" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="51" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;endArrow=open;endFill=0;" edge="1" parent="1" source="39" target="41">
