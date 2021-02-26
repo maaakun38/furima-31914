@@ -1,4 +1,4 @@
-<mxfile host="65bd71144e" modified="2021-02-26T07:20:20.455Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.0 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36" version="14.2.4" etag="KXYhbKVbsjTdg-qpd7rI" type="embed">
+<mxfile host="65bd71144e" modified="2021-02-26T07:37:01.166Z" agent="5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.52.0 Chrome/83.0.4103.122 Electron/9.3.5 Safari/537.36" version="14.2.4" etag="qq8rSaMvKlyxM5ILTzno" type="embed">
     <diagram id="LipSlK3_hgSNNj_bYk18" name="Page-1">
         <mxGraphModel dx="886" dy="526" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
@@ -7,7 +7,7 @@
                 <mxCell id="32" value="users" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
                     <mxGeometry x="60" y="70" width="300" height="150" as="geometry"/>
                 </mxCell>
-                <mxCell id="33" value="nick_name (string, not null)&#10;email (string, not null)&#10;encrypted_password (string, not null,unique: true )&#10;first_name (string, not null)&#10;last_name (string, not null)&#10;first_furigana(string, not null)&#10;last_furigana(string, not null)&#10;birth_date (date, not null)&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="32">
+                <mxCell id="33" value="nickname (string, not null)&#10;email (string, not null)&#10;encrypted_password (string, not null,unique: true )&#10;first_name (string, not null)&#10;last_name (string, not null)&#10;first_furigana(string, not null)&#10;last_furigana(string, not null)&#10;birth_date (date, not null)&#10;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;" vertex="1" parent="32">
                     <mxGeometry y="30" width="300" height="120" as="geometry"/>
                 </mxCell>
                 <mxCell id="36" value="comments" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;" vertex="1" parent="1">
