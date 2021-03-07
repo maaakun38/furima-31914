@@ -10,6 +10,15 @@ class ProductsController < ApplicationController
   #  end
   #end
 
+  def new
+    @product = Product.new
+  end
+
+  def create
+    @product = Product.create
+  end
+
+
 private
 
   def product_params
