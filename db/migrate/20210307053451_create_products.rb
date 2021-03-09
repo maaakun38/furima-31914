@@ -4,7 +4,7 @@ class CreateProducts < ActiveRecord::Migration[6.0]
 
       t.timestamps
 
-      t.string :titile,              null: false  
+      t.string :title,              null: false  
       t.integer :price,              null: false
       t.text :description,           null: false
       t.references :user,            foreign_ley: true
