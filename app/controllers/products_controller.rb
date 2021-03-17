@@ -1,7 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, except: [:index, :new, :create]
   before_action :authenticate_user!, except: [:index, :show]
-  before_action :contributor_confirmation, only: [:edit, :update]
+  before_action :contributor_confirmation, only: [:edit, :update, :destroy]
 
   def index
     @products = Product.order("created_at DESC")
@@ -34,7 +34,13 @@ class ProductsController < ApplicationController
     end
   end
 
-  private
+  def destroy
+    if @product.destroy
+      redirect_to root_path
+    end
+  end
+
+private
 
   def product_params
     params.require(:product).permit(:image, :title, :price, :description, :category_id, :condition_id, :shipping_charge_id, :prefecture_id, :shipping_date_id).merge(user_id: current_user.id)
