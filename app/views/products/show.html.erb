@@ -32,7 +32,7 @@
           <%= link_to "削除", product_path(@product.id), method: :delete, class:"item-destroy" %>
         <%# <% end %>
       <% else %>
-        <%= link_to "購入画面に進む", product_purchases_path ,class:"item-red-btn"%>
+        <%= link_to "購入画面に進む", product_purchases_path(@product.id), class:"item-red-btn"%>
       <% end %>
     <% end %>
 
