@@ -8,6 +8,7 @@ class PurchasesController < ApplicationController
   def create
     @product = Product.find(params[:product_id])
     @purchase_buyer = PurchaseBuyer.new(purchase_params)
+
     if @purchase_buyer.valid? 
       @purchase_buyer.save
       redirect_to root_path
@@ -20,7 +21,7 @@ class PurchasesController < ApplicationController
   private
 
   def purchase_params
-    params.permit(:postal_code, :prefecture_id, :municipality, :address, :building, :phone_number)
+    params.require(:purchase_buyer).permit(:postal_code, :prefecture_id, :municipality, :address, :building, :phone_number)
   end
 
 end
