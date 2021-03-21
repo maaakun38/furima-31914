@@ -1,13 +1,15 @@
 class PurchasesController < ApplicationController
-  
+  before_action :set_product
+
   def index
     redirect_to new_user_session_path unless user_signed_in?
-      @product = Product.find(params[:product_id])
+    if current_user == @product.user
+      redirect_to root_path 
+    end
       @purchase_buyer = PurchaseBuyer.new
   end
 
   def create
-    @product = Product.find(params[:product_id])
     @purchase_buyer = PurchaseBuyer.new(purchase_params)
 
     if @purchase_buyer.valid? 
@@ -20,6 +22,10 @@ class PurchasesController < ApplicationController
 
 
   private
+
+  def set_product
+    @product = Product.find(params[:product_id])
+  end
 
   def purchase_params
     params.require(:purchase_buyer).permit(:postal_code, :prefecture_id, :municipality, :address, :building, :phone_number).merge(user_id: current_user.id, product_id: params[:product_id])
