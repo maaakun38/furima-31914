@@ -1,6 +1,7 @@
 class PurchasesController < ApplicationController
   
   def index
+    redirect_to new_user_session_path unless user_signed_in?
       @product = Product.find(params[:product_id])
       @purchase_buyer = PurchaseBuyer.new
   end
