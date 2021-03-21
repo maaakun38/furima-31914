@@ -1,7 +1,7 @@
 class PurchaseBuyer
 
   include ActiveModel::Model
-  attr_accessor :postal_code, :prefecture_id, :municipality, :address, :building, :phone_number
+  attr_accessor :user_id, :product_id, :postal_code, :prefecture_id, :municipality, :address, :building, :phone_number
   
   with_options presence: true do
     validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)" }
@@ -15,7 +15,7 @@ class PurchaseBuyer
 
 
   def save
-    purchase = Purchase.create(user_id: "a", product_id: params[:product_id])
+    purchase = Purchase.create(user_id: user_id, product_id: product_id)
     Buyer.create(purchase_id: purchase.id, postal_code: postal_code, prefecture_id: prefecture_id, municipality: municipality, address: address, building: building, phone_number: phone_number)
   end
   
