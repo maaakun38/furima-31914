@@ -15,8 +15,8 @@ class PurchaseBuyer
 
 
   def save
-    Purchase.create(user_id: "a", product_id: "product_id")
-    Buyer.create(postal_code: postal_code, prefecture_id: prefecture_id, municipality: municipality, address: address, building: building, phone_number: phone_number)
+    purchase = Purchase.create(user_id: "a", product_id: params[:product_id])
+    Buyer.create(purchase_id: purchase.id, postal_code: postal_code, prefecture_id: prefecture_id, municipality: municipality, address: address, building: building, phone_number: phone_number)
   end
   
 end
