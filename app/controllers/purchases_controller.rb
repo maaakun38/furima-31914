@@ -6,6 +6,9 @@ class PurchasesController < ApplicationController
     if current_user == @product.user
       redirect_to root_path 
     end
+    if Purchase.exists?(product_id: @product.id)
+      redirect_to root_path 
+    end
       @purchase_buyer = PurchaseBuyer.new
   end
 
