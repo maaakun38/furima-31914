@@ -11,9 +11,13 @@ RSpec.describe PurchaseBuyer, type: :model do
         expect(@purchase_buyer).to be_valid
       end
     end
-  end
 
     context '商品購入できないとき' do
+      it 'tokenが空では登録できないこと' do
+        @purchase_buyer.token = nil
+        @purchase_buyer.valid?
+        expect(@purchase_buyer.errors.full_messages).to include("Token can't be blank")
+      end
       it '郵便番号が空では登録できない' do
         @purchase_buyer.postal_code = ''
         @purchase_buyer.valid?
@@ -59,13 +63,6 @@ RSpec.describe PurchaseBuyer, type: :model do
         @purchase_buyer.valid?
         expect(@purchase_buyer.errors.full_messages).to include("Prefecture can't be blank")
       end
-
-
-
-
-
-
     end
-
-
+  end
 end
