@@ -1,13 +1,13 @@
 class PurchaseBuyer
 
   include ActiveModel::Model
-  attr_accessor :user_id, :product_id, :postal_code, :prefecture_id, :municipality, :address, :building, :phone_number
+  attr_accessor :price, :user_id, :product_id, :postal_code, :prefecture_id, :municipality, :address, :building, :phone_number, :token
   
   with_options presence: true do
     validates :postal_code, format: { with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)" }
     validates :municipality, format: { with: /\A[ぁ-んァ-ン一-龥々]/, message: "is invalid. Input full-width characters." }
     validates :phone_number, numericality: { only_integer: true, message: "is invalid. Input half-width characters." }
-    validates :address
+    validates :address, :token
     validates :prefecture_id, numericality: { other_than: 0, message: "can't be blank" }
   end
 
