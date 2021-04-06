@@ -1,14 +1,9 @@
 class PurchasesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_product
+  before_action :set_user
 
   def index
-    redirect_to new_user_session_path unless user_signed_in?
-    if current_user == @product.user
-      redirect_to root_path 
-    end
-    if Purchase.exists?(product_id: @product.id)
-      redirect_to root_path 
-    end
       @purchase_buyer = PurchaseBuyer.new
   end
 
@@ -38,5 +33,14 @@ class PurchasesController < ApplicationController
   def purchase_params
     params.require(:purchase_buyer).permit(:postal_code, :prefecture_id, :municipality, :address, :building, :phone_number).merge(user_id: current_user.id, product_id: params[:product_id], token: params[:token])
   end
+
+  def set_user
+    if current_user == @product.user
+      redirect_to root_path 
+    else Purchase.exists?(product_id: @product.id)
+      redirect_to root_path 
+    end
+  end
+
 
 end
