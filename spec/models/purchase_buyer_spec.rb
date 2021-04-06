@@ -10,9 +10,23 @@ RSpec.describe PurchaseBuyer, type: :model do
       it '全項目正しく埋めていれば登録できる' do
         expect(@purchase_buyer).to be_valid
       end
+      it '建物番号が空でも登録できる' do
+        @purchase_buyer.building = ''
+        expect(@purchase_buyer).to be_valid
+      end
     end
 
     context '商品購入できないとき' do
+      it 'user_idが空では登録できない' do
+        @purchase_buyer.user_id = ''
+        @purchase_buyer.valid?
+        expect(@purchase_buyer.errors.full_messages).to include("User can't be blank")
+      end
+      it 'product_idが空では登録できない' do
+        @purchase_buyer.product_id = ''
+        @purchase_buyer.valid?
+        expect(@purchase_buyer.errors.full_messages).to include("Product can't be blank")
+      end
       it 'tokenが空では登録できないこと' do
         @purchase_buyer.token = nil
         @purchase_buyer.valid?
