@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe PurchaseBuyer, type: :model do
   before do
-    @purchase_buyer = FactoryBot.build(:purchase_buyer)
+    @user = FactoryBot.build_stubbed(:user)
+    @product = FactoryBot.build_stubbed(:product)
+    @purchase_buyer = FactoryBot.build(:purchase_buyer, user_id: @user.id, product_id: @product.id)
   end
 
   describe '商品購入機能' do
@@ -64,6 +66,16 @@ RSpec.describe PurchaseBuyer, type: :model do
       end
       it '電話番号が12文字以上では登録できない' do
         @purchase_buyer.phone_number = '090123456789'
+        @purchase_buyer.valid?
+        expect(@purchase_buyer.errors.full_messages).to include("Phone number is invalid. Input up to 11 characters")
+      end
+      it '電話番号が半角数字のみでないと登録できない' do
+        @purchase_buyer.phone_number = '０90123456789'
+        @purchase_buyer.valid?
+        expect(@purchase_buyer.errors.full_messages).to include("Phone number is invalid. Input up to 11 characters")
+      end
+      it '電話番号が全角数字だと登録できない' do
+        @purchase_buyer.phone_number = '０９０１２３４１２３４'
         @purchase_buyer.valid?
         expect(@purchase_buyer.errors.full_messages).to include("Phone number is invalid. Input up to 11 characters")
       end
