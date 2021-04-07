@@ -10,12 +10,7 @@ class PurchasesController < ApplicationController
   def create
     @purchase_buyer = PurchaseBuyer.new(purchase_params)
     if @purchase_buyer.valid? 
-      Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  # 自身のPAY.JPテスト秘密鍵を記述しましょう
-      Payjp::Charge.create(
-        amount: @product.price,  # 商品の値段
-        card: purchase_params[:token],    # カードトークン
-        currency: 'jpy'                 # 通貨の種類（日本円）
-      )
+      settlement_system
       @purchase_buyer.save
       redirect_to root_path
     else
@@ -37,9 +32,18 @@ class PurchasesController < ApplicationController
   def set_user
     if current_user == @product.user
       redirect_to root_path 
-    else Purchase.exists?(product_id: @product.id)
+    elsif Purchase.exists?(product_id: @product.id)
       redirect_to root_path 
     end
+  end
+
+  def settlement_system
+    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]  # 自身のPAY.JPテスト秘密鍵を記述しましょう
+      Payjp::Charge.create(
+        amount: @product.price,  # 商品の値段
+        card: purchase_params[:token],    # カードトークン
+        currency: 'jpy'                 # 通貨の種類（日本円）
+      )
   end
 
 
