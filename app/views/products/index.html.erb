@@ -132,7 +132,7 @@
           <div class='item-img-content'>
             <%= image_tag product.image, class: "item-img" %>
 
-              <% if Purchase.exists?(product_id: product.id) %>
+              <% if @purchase.exists?(product_id: product.id) %>
                 <div class='sold-out'>
                   <span>Sold Out!!</span>
                 </div> 
