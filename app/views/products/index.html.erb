@@ -132,13 +132,12 @@
           <div class='item-img-content'>
             <%= image_tag product.image, class: "item-img" %>
 
-            <%# 商品が売れていればsold outを表示しましょう %>
-            <%# <div class='sold-out'>
-              <span>Sold Out!!</span>
-            </div> %>
-            <%# //商品が売れていればsold outを表示しましょう %>
-
-          </div>
+              <% if @purchase.exists?(product_id: product.id) %>
+                <div class='sold-out'>
+                  <span>Sold Out!!</span>
+                </div> 
+              <% end %>
+            </div>
           <div class='item-info'>
             <h3 class='item-name'>
               <%= product.title %>
